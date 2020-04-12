@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'AvatarDropdown.dart';
 
 class MyAppBar extends StatelessWidget {
+  final bool allowBack;
   const MyAppBar({
     Key key,
     @required GlobalKey<ScaffoldState> drawerKey,
+    this.allowBack = false,
   })  : _drawerKey = drawerKey,
         super(key: key);
 
@@ -23,13 +25,20 @@ class MyAppBar extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          GestureDetector(
-            onTap: () => _drawerKey.currentState.openDrawer(),
-            child: Image.asset(
-              "assets/logo.png",
-              width: 50,
+          if (!allowBack)
+            GestureDetector(
+              onTap: () => _drawerKey.currentState.openDrawer(),
+              child: Image.asset(
+                "assets/logo.png",
+                width: 50,
+              ),
             ),
-          ),
+          if (allowBack)
+            IconButton(
+                icon: Icon(Icons.arrow_back_ios),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }),
           Spacer(),
           AvatarDropdown(),
         ],

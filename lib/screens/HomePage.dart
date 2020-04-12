@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:owlschool/screens/ListPage.dart';
 
 import '../ui_widgets/AppDrawer.dart';
 import '../ui_widgets/CalenderListItem.dart';
@@ -28,8 +29,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   selectDate(DateTime date) {
-    print("ss");
     setState(() => selectedDate = date);
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return ListPage();
+        },
+      ),
+    );
   }
 
   @override

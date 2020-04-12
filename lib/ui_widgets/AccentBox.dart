@@ -7,7 +7,7 @@ class AccentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       decoration: BoxDecoration(
         color: Theme.of(context).accentColor,
         borderRadius: BorderRadius.circular(10),
